@@ -95,6 +95,17 @@ test("receiveAttack method records sunk attack", () => {
   expect(ship.isSunk()).toBe(true);
 });
 
+test("receiveAttack method returns false when attack is outside of board boundaries", () => {
+  const board = battleship.Gameboard();
+  expect(board.receiveAttack(10, 10)).toBe(false);
+});
+
+test("receiveAttack method returns false when attack is on a previously attacked space", () => {
+  const board = battleship.Gameboard();
+  board.receiveAttack(0, 0);
+  expect(board.receiveAttack(0, 0)).toBe(false);
+});
+
 test("allSunk method returns false when not all ships are sunk", () => {
   const board = battleship.Gameboard();
   const ship = battleship.Ship(3);
