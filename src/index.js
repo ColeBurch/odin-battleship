@@ -26,11 +26,33 @@ const Gameboard = () => {
   }
   const placeShip = (ship, x, y, direction) => {
     if (direction === "horizontal") {
+      if (x < 0 || x > 9 || y < 0 || y > 9) {
+        return false;
+      }
+      if (x + ship.length > 10) {
+        return false;
+      }
+      for (let i = 0; i < ship.length; i++) {
+        if (board[x + i][y].shipSpace) {
+          return false;
+        }
+      }
       for (let i = 0; i < ship.length; i++) {
         board[x + i][y].shipSpace = true;
         board[x + i][y].shipPointer = ship;
       }
     } else if (direction === "vertical") {
+      if (x < 0 || x > 9 || y < 0 || y > 9) {
+        return false;
+      }
+      if (y + ship.length > 10) {
+        return false;
+      }
+      for (let i = 0; i < ship.length; i++) {
+        if (board[x][y + i].shipSpace) {
+          return false;
+        }
+      }
       for (let i = 0; i < ship.length; i++) {
         board[x][y + i].shipSpace = true;
         board[x][y + i].shipPointer = ship;
