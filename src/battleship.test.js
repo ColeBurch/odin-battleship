@@ -69,6 +69,48 @@ test("placeShip method places ship on board vertically", () => {
   expect(board.board[0][2].shipPointer).toEqual(ship);
 });
 
+test("placeShip method returns false when ship is placed outside of board boundaries", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  expect(board.placeShip(ship, 10, 10, "horizontal")).toBe(false);
+});
+
+test("placeShip method returns false when ship is placed on top of another ship", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
+  board.placeShip(ship, 0, 0, "horizontal");
+  expect(board.placeShip(ship2, 0, 0, "horizontal")).toBe(false);
+});
+
+test("placeShip method returns false when extended ship is placed outside of board boundaries horizontally", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  expect(board.placeShip(ship, 8, 8, "horizontal")).toBe(false);
+});
+
+test("placeShip method returns false when extended ship is placed on top of another ship horizontally", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
+  board.placeShip(ship, 2, 0, "horizontal");
+  expect(board.placeShip(ship2, 0, 0, "horizontal")).toBe(false);
+});
+
+test("placeShip method returns false when extended ship is placed outside of board boundaries vertically", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  expect(board.placeShip(ship, 8, 8, "vertical")).toBe(false);
+});
+
+test("placeShip method returns false when extended ship is placed on top of another ship vertically", () => {
+  const board = battleship.Gameboard();
+  const ship = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
+  board.placeShip(ship, 0, 2, "vertical");
+  expect(board.placeShip(ship2, 0, 0, "vertical")).toBe(false);
+});
+
 test("receiveAttack method records missed attack", () => {
   const board = battleship.Gameboard();
   board.receiveAttack(0, 0);

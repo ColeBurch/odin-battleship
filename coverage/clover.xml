@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684361874688" clover="3.2.0">
-  <project timestamp="1684361874688" name="All files">
+<coverage generated="1684362968698" clover="3.2.0">
+  <project timestamp="1684362968698" name="All files">
     <metrics statements="42" coveredstatements="42" conditionals="18" coveredconditionals="17" methods="7" coveredmethods="7" elements="67" coveredelements="66" complexity="0" loc="42" ncloc="42" packages="1" files="1" classes="1"/>
     <file name="index.js" path="/Users/coleburch/Desktop/projects/odin-battleship/src/index.js">
       <metrics statements="42" coveredstatements="42" conditionals="18" coveredconditionals="17" methods="7" coveredmethods="7"/>
       <line num="3" count="1" type="stmt"/>
-      <line num="4" count="13" type="stmt"/>
-      <line num="5" count="13" type="stmt"/>
-      <line num="6" count="13" type="stmt"/>
+      <line num="4" count="22" type="stmt"/>
+      <line num="5" count="22" type="stmt"/>
+      <line num="6" count="22" type="stmt"/>
       <line num="7" count="13" type="stmt"/>
-      <line num="9" count="13" type="stmt"/>
+      <line num="9" count="22" type="stmt"/>
       <line num="10" count="11" type="stmt"/>
-      <line num="12" count="13" type="stmt"/>
+      <line num="12" count="22" type="stmt"/>
       <line num="15" count="1" type="stmt"/>
-      <line num="16" count="13" type="stmt"/>
-      <line num="17" count="13" type="stmt"/>
-      <line num="18" count="130" type="stmt"/>
-      <line num="19" count="130" type="stmt"/>
-      <line num="20" count="1300" type="stmt"/>
-      <line num="27" count="13" type="stmt"/>
-      <line num="28" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="29" count="6" type="stmt"/>
-      <line num="30" count="18" type="stmt"/>
-      <line num="31" count="18" type="stmt"/>
-      <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="34" count="1" type="stmt"/>
-      <line num="35" count="3" type="stmt"/>
-      <line num="36" count="3" type="stmt"/>
-      <line num="40" count="13" type="stmt"/>
+      <line num="16" count="19" type="stmt"/>
+      <line num="17" count="19" type="stmt"/>
+      <line num="18" count="190" type="stmt"/>
+      <line num="19" count="190" type="stmt"/>
+      <line num="20" count="1900" type="stmt"/>
+      <line num="27" count="19" type="stmt"/>
+      <line num="28" count="16" type="cond" truecount="2" falsecount="0"/>
+      <line num="29" count="12" type="stmt"/>
+      <line num="30" count="34" type="stmt"/>
+      <line num="31" count="32" type="stmt"/>
+      <line num="33" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="34" count="4" type="stmt"/>
+      <line num="35" count="12" type="stmt"/>
+      <line num="36" count="11" type="stmt"/>
+      <line num="40" count="19" type="stmt"/>
       <line num="41" count="14" type="cond" truecount="6" falsecount="0"/>
       <line num="42" count="1" type="stmt"/>
       <line num="44" count="13" type="cond" truecount="2" falsecount="0"/>
@@ -35,14 +35,14 @@
       <line num="47" count="12" type="stmt"/>
       <line num="48" count="12" type="cond" truecount="2" falsecount="0"/>
       <line num="49" count="10" type="stmt"/>
-      <line num="52" count="13" type="stmt"/>
+      <line num="52" count="19" type="stmt"/>
       <line num="53" count="2" type="stmt"/>
       <line num="54" count="11" type="stmt"/>
       <line num="55" count="102" type="cond" truecount="2" falsecount="0"/>
       <line num="59" count="1" type="stmt"/>
       <line num="61" count="101" type="stmt"/>
       <line num="65" count="1" type="stmt"/>
-      <line num="67" count="13" type="stmt"/>
+      <line num="67" count="19" type="stmt"/>
       <line num="70" count="1" type="stmt"/>
       <line num="71" count="1" type="stmt"/>
       <line num="72" count="1" type="stmt"/>
