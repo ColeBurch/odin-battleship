@@ -50,11 +50,11 @@ test("placeShip method places ship on board horizontally", () => {
   const ship = battleship.Ship(3);
   board.placeShip(ship, 0, 0, "horizontal");
   expect(board.board[0][0].shipSpace).toEqual(true);
-  expect(board.board[0][1].shipSpace).toEqual(true);
-  expect(board.board[0][2].shipSpace).toEqual(true);
+  expect(board.board[1][0].shipSpace).toEqual(true);
+  expect(board.board[2][0].shipSpace).toEqual(true);
   expect(board.board[0][0].shipPointer).toEqual(ship);
-  expect(board.board[0][1].shipPointer).toEqual(ship);
-  expect(board.board[0][2].shipPointer).toEqual(ship);
+  expect(board.board[1][0].shipPointer).toEqual(ship);
+  expect(board.board[2][0].shipPointer).toEqual(ship);
 });
 
 test("placeShip method places ship on board vertically", () => {
@@ -62,11 +62,11 @@ test("placeShip method places ship on board vertically", () => {
   const ship = battleship.Ship(3);
   board.placeShip(ship, 0, 0, "vertical");
   expect(board.board[0][0].shipSpace).toEqual(true);
-  expect(board.board[1][0].shipSpace).toEqual(true);
-  expect(board.board[2][0].shipSpace).toEqual(true);
+  expect(board.board[0][1].shipSpace).toEqual(true);
+  expect(board.board[0][2].shipSpace).toEqual(true);
   expect(board.board[0][0].shipPointer).toEqual(ship);
-  expect(board.board[1][0].shipPointer).toEqual(ship);
-  expect(board.board[2][0].shipPointer).toEqual(ship);
+  expect(board.board[0][1].shipPointer).toEqual(ship);
+  expect(board.board[0][2].shipPointer).toEqual(ship);
 });
 
 test("receiveAttack method records missed attack", () => {
@@ -90,17 +90,22 @@ test("receiveAttack method records sunk attack", () => {
   const ship = battleship.Ship(3);
   board.placeShip(ship, 0, 0, "horizontal");
   board.receiveAttack(0, 0);
-  board.receiveAttack(0, 1);
-  board.receiveAttack(0, 2);
+  board.receiveAttack(1, 0);
+  board.receiveAttack(2, 0);
   expect(ship.isSunk()).toBe(true);
 });
 
 test("allSunk method returns false when not all ships are sunk", () => {
   const board = battleship.Gameboard();
   const ship = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
   board.placeShip(ship, 0, 0, "horizontal");
+  board.placeShip(ship2, 0, 1, "horizontal");
   board.receiveAttack(0, 0);
-  board.receiveAttack(0, 1);
+  board.receiveAttack(1, 0);
+  board.receiveAttack(2, 0);
+  expect(ship.isSunk()).toBe(true);
+  expect(ship2.isSunk()).toBe(false);
   expect(board.allSunk()).toBe(false);
 });
 
@@ -109,7 +114,7 @@ test("allSunk method returns true when all ships are sunk", () => {
   const ship = battleship.Ship(3);
   board.placeShip(ship, 0, 0, "horizontal");
   board.receiveAttack(0, 0);
-  board.receiveAttack(0, 1);
-  board.receiveAttack(0, 2);
+  board.receiveAttack(1, 0);
+  board.receiveAttack(2, 0);
   expect(board.allSunk()).toBe(true);
 });
