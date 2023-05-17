@@ -38,6 +38,12 @@ const Gameboard = () => {
     }
   };
   const receiveAttack = (x, y) => {
+    if (x < 0 || x > 9 || y < 0 || y > 9) {
+      return false;
+    }
+    if (board[x][y].shotAt) {
+      return false;
+    }
     board[x][y].shotAt = true;
     if (board[x][y].shipSpace) {
       board[x][y].shipPointer.hit();
