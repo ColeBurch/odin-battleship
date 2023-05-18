@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684363357683" clover="3.2.0">
-  <project timestamp="1684363357684" name="All files">
+<coverage generated="1684444885618" clover="3.2.0">
+  <project timestamp="1684444885618" name="All files">
     <metrics statements="56" coveredstatements="55" conditionals="38" coveredconditionals="36" methods="7" coveredmethods="7" elements="101" coveredelements="98" complexity="0" loc="56" ncloc="56" packages="1" files="1" classes="1"/>
     <file name="index.js" path="/Users/coleburch/Desktop/projects/odin-battleship/src/index.js">
       <metrics statements="56" coveredstatements="55" conditionals="38" coveredconditionals="36" methods="7" coveredmethods="7"/>

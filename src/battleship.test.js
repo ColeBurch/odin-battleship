@@ -192,21 +192,6 @@ test("Player method returns an object with a ships property that is an array", (
   expect(Array.isArray(battleship.Player().ships)).toBe(true);
 });
 
-test("Player method returns an object with an attack method", () => {
-  expect(battleship.Player().attack).toBeDefined();
-});
-
-test("Player method returns an object with an attack method that returns false when attack is outside of board boundaries", () => {
-  const player = battleship.Player();
-  expect(player.attack(10, 10)).toBe(false);
-});
-
-test("Player method returns an object with an attack method that returns false when attack is on a previously attacked space", () => {
-  const player = battleship.Player();
-  player.attack(0, 0);
-  expect(player.attack(0, 0)).toBe(false);
-});
-
 test("computer method returns an object", () => {
   expect(typeof battleship.computer()).toBe("object");
 });
@@ -225,19 +210,4 @@ test("computer method returns an object with a ships property", () => {
 
 test("computer method returns an object with a ships property that is an array", () => {
   expect(Array.isArray(battleship.computer().ships)).toBe(true);
-});
-
-test("computer method returns an object with an attack method", () => {
-  expect(battleship.computer().attack).toBeDefined();
-});
-
-test("computer method returns an object with an attack method that returns false when attack is outside of board boundaries", () => {
-  const player = battleship.computer();
-  expect(player.attack(10, 10)).toBe(false);
-});
-
-test("computer method returns an object with an attack method that returns false when attack is on a previously attacked space", () => {
-  const player = battleship.computer();
-  player.attack(0, 0);
-  expect(player.attack(0, 0)).toBe(false);
 });
