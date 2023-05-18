@@ -89,6 +89,22 @@ const Gameboard = () => {
   return { board, placeShip, receiveAttack, allSunk };
 };
 
+const Player = () => {
+  const name = "Player";
+  const board = Gameboard();
+  const ships = [Ship(5), Ship(4), Ship(3), Ship(3), Ship(2)];
+  return { name, board, ships };
+};
+
+const Computer = () => {
+  const name = "Computer";
+  const board = Gameboard();
+  const ships = [Ship(5), Ship(4), Ship(3), Ship(3), Ship(2)];
+  return { name, board, ships };
+};
+
 module.exports = {};
 module.exports.Ship = Ship;
 module.exports.Gameboard = Gameboard;
+module.exports.Player = Player;
+module.exports.Computer = Computer;

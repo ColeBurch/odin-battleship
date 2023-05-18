@@ -193,21 +193,21 @@ test("Player method returns an object with a ships property that is an array", (
 });
 
 test("computer method returns an object", () => {
-  expect(typeof battleship.computer()).toBe("object");
+  expect(typeof battleship.Computer()).toBe("object");
 });
 
 test("computer method returns an object with a name property", () => {
-  expect(battleship.computer().name).toBeDefined();
+  expect(battleship.Computer().name).toBeDefined();
 });
 
 test("computer method returns an object with a board property", () => {
-  expect(battleship.computer().board).toBeDefined();
+  expect(battleship.Computer().board).toBeDefined();
 });
 
 test("computer method returns an object with a ships property", () => {
-  expect(battleship.computer().ships).toBeDefined();
+  expect(battleship.Computer().ships).toBeDefined();
 });
 
 test("computer method returns an object with a ships property that is an array", () => {
-  expect(Array.isArray(battleship.computer().ships)).toBe(true);
+  expect(Array.isArray(battleship.Computer().ships)).toBe(true);
 });
