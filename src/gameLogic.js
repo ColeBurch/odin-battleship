@@ -146,10 +146,8 @@ const Computer = () => {
 const GameController = () => {
   const player = Player();
   player.randomPlaceShips();
-  console.log(player.board.board);
   const computer = Computer();
   computer.randomPlaceShips();
-  console.log(computer.board.board);
   let turncounter = 0;
   while (
     player.board.allSunk() === false &&
