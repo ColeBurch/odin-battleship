@@ -100,7 +100,28 @@ const Computer = () => {
   const name = "Computer";
   const board = Gameboard();
   const ships = [Ship(5), Ship(4), Ship(3), Ship(3), Ship(2)];
-  return { name, board, ships };
+  const getRandomCoordinates = () => {
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
+    return [x, y];
+  };
+  const getRandomDirection = () => {
+    const directions = ["horizontal", "vertical"];
+    const direction = directions[Math.floor(Math.random() * 2)];
+    return direction;
+  };
+  const randomPlaceShips = () => {
+    for (let i = 0; i < ships.length; i++) {
+      let coordinates = getRandomCoordinates();
+      let x = coordinates[0];
+      let y = coordinates[1];
+      let direction = getRandomDirection();
+      if (board.placeShip(ships[i], x, y, direction) === false) {
+        i--;
+      }
+    }
+  };
+  return { name, board, ships, randomPlaceShips, getRandomCoordinates };
 };
 
 module.exports = {};

@@ -216,10 +216,6 @@ test("computer method returns an object with a getRandomCoordinates method", () 
   expect(battleship.Computer().getRandomCoordinates).toBeDefined();
 });
 
-test("computer method returns an object with a getRandomDirection method", () => {
-  expect(battleship.Computer().getRandomDirection).toBeDefined();
-});
-
 test("computer method returns an object with a randomPlaceShips method", () => {
   expect(battleship.Computer().randomPlaceShips).toBeDefined();
 });
