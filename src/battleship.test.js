@@ -1,4 +1,4 @@
-const battleship = require("./index.js");
+const battleship = require("./gameLogic.js");
 
 test("Ship factory returns object", () => {
   expect(battleship.Ship(3)).toEqual(expect.any(Object));
@@ -31,6 +31,21 @@ test("isSunk method returns true when ship is sunk", () => {
 
 test("Gameboard factory returns object", () => {
   expect(battleship.Gameboard()).toEqual(expect.any(Object));
+});
+
+test("Gameboard factory returns object with board property", () => {
+  expect(battleship.Gameboard()).toHaveProperty("board");
+});
+
+test("board property returns an empy board", () => {
+  const board = battleship.Gameboard();
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      expect(board.board[i][j].shipSpace).toEqual(false);
+      expect(board.board[i][j].shipPointer).toEqual(null);
+      expect(board.board[i][j].shotAt).toEqual(false);
+    }
+  }
 });
 
 test("Gameboard factory returns object with placeShip method", () => {
@@ -172,6 +187,69 @@ test("allSunk method returns true when all ships are sunk", () => {
   expect(board.allSunk()).toBe(true);
 });
 
+test("allSunk method returns true when all ships are sunk with more than 1 ship placed", () => {
+  const board = battleship.Gameboard();
+  const ship1 = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
+  const ship3 = battleship.Ship(2);
+  const ship4 = battleship.Ship(4);
+  const ship5 = battleship.Ship(5);
+  board.placeShip(ship1, 0, 0, "horizontal");
+  board.placeShip(ship2, 0, 1, "horizontal");
+  board.placeShip(ship3, 0, 2, "horizontal");
+  board.placeShip(ship4, 0, 3, "horizontal");
+  board.placeShip(ship5, 0, 4, "horizontal");
+  board.receiveAttack(0, 0);
+  board.receiveAttack(1, 0);
+  board.receiveAttack(2, 0);
+  board.receiveAttack(0, 1);
+  board.receiveAttack(1, 1);
+  board.receiveAttack(2, 1);
+  board.receiveAttack(0, 2);
+  board.receiveAttack(1, 2);
+  board.receiveAttack(0, 3);
+  board.receiveAttack(1, 3);
+  board.receiveAttack(2, 3);
+  board.receiveAttack(3, 3);
+  board.receiveAttack(0, 4);
+  board.receiveAttack(1, 4);
+  board.receiveAttack(2, 4);
+  board.receiveAttack(3, 4);
+  board.receiveAttack(4, 4);
+  expect(board.allSunk()).toBe(true);
+});
+
+test("allSunk method returns false when not all ships are sunk with more than 1 ship placed", () => {
+  const board = battleship.Gameboard();
+  const ship1 = battleship.Ship(3);
+  const ship2 = battleship.Ship(3);
+  const ship3 = battleship.Ship(2);
+  const ship4 = battleship.Ship(4);
+  const ship5 = battleship.Ship(5);
+  board.placeShip(ship1, 0, 0, "horizontal");
+  board.placeShip(ship2, 0, 1, "horizontal");
+  board.placeShip(ship3, 0, 2, "horizontal");
+  board.placeShip(ship4, 0, 3, "horizontal");
+  board.placeShip(ship5, 0, 4, "horizontal");
+  board.receiveAttack(0, 0);
+  board.receiveAttack(1, 0);
+  board.receiveAttack(2, 0);
+  board.receiveAttack(0, 1);
+  board.receiveAttack(1, 1);
+  board.receiveAttack(2, 1);
+  board.receiveAttack(0, 2);
+  board.receiveAttack(1, 2);
+  board.receiveAttack(0, 3);
+  board.receiveAttack(1, 3);
+  board.receiveAttack(2, 3);
+  board.receiveAttack(3, 3);
+  board.receiveAttack(0, 4);
+  board.receiveAttack(1, 4);
+  board.receiveAttack(2, 4);
+  board.receiveAttack(3, 4);
+  expect(board.allSunk()).toBe(false);
+});
+
 test("Player method returns an object", () => {
   expect(typeof battleship.Player()).toBe("object");
 });
@@ -232,4 +310,56 @@ test("randomPlaceShips method places all ships", () => {
     }
   }
   expect(shipSpaceCount).toBe(17);
+});
+
+test("player randomPlaceShips method places all ships", () => {
+  const player = battleship.Player();
+  player.randomPlaceShips();
+  let shipSpaceCount = 0;
+  for (let i = 0; i < player.board.board.length; i++) {
+    for (let j = 0; j < player.board.board[i].length; j++) {
+      if (player.board.board[i][j].shipSpace) {
+        shipSpaceCount++;
+      }
+    }
+  }
+  expect(shipSpaceCount).toBe(17);
+});
+
+test("computer board setup is done correctly", () => {
+  const computer = battleship.Computer();
+  computer.randomPlaceShips();
+  let shipSpaceCount = 0;
+  let shotAtCount = 0;
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (computer.board.board[i][j].shipSpace) {
+        shipSpaceCount++;
+      }
+      if (computer.board.board[i][j].shotAt) {
+        shotAtCount++;
+      }
+    }
+  }
+  expect(shipSpaceCount).toBe(17);
+  expect(shotAtCount).toBe(0);
+});
+
+test("player board setup is done correctly", () => {
+  const player = battleship.Player();
+  player.randomPlaceShips();
+  let shipSpaceCount = 0;
+  let shotAtCount = 0;
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (player.board.board[i][j].shipSpace) {
+        shipSpaceCount++;
+      }
+      if (player.board.board[i][j].shotAt) {
+        shotAtCount++;
+      }
+    }
+  }
+  expect(shipSpaceCount).toBe(17);
+  expect(shotAtCount).toBe(0);
 });
