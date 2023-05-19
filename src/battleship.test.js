@@ -211,3 +211,29 @@ test("computer method returns an object with a ships property", () => {
 test("computer method returns an object with a ships property that is an array", () => {
   expect(Array.isArray(battleship.Computer().ships)).toBe(true);
 });
+
+test("computer method returns an object with a getRandomCoordinates method", () => {
+  expect(battleship.Computer().getRandomCoordinates).toBeDefined();
+});
+
+test("computer method returns an object with a getRandomDirection method", () => {
+  expect(battleship.Computer().getRandomDirection).toBeDefined();
+});
+
+test("computer method returns an object with a randomPlaceShips method", () => {
+  expect(battleship.Computer().randomPlaceShips).toBeDefined();
+});
+
+test("randomPlaceShips method places all ships", () => {
+  const computer = battleship.Computer();
+  computer.randomPlaceShips();
+  let shipSpaceCount = 0;
+  for (let i = 0; i < computer.board.board.length; i++) {
+    for (let j = 0; j < computer.board.board[i].length; j++) {
+      if (computer.board.board[i][j].shipSpace) {
+        shipSpaceCount++;
+      }
+    }
+  }
+  expect(shipSpaceCount).toBe(17);
+});
